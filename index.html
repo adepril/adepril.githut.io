@@ -1,39 +1,61 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
-        .container {
-            text-align: center;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-        }
-    </style>
+    <title>Simple React App with Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Bienvenue</h1>
-        <p>Merci de visiter notre site. Nous sommes ravis de vous accueillir !</p>
-    </div>
+    <div id="root"></div>
+    <script type="text/babel">
+        function App() {
+            const handleSubmit = (event) => {
+                event.preventDefault();
+                console.log("Form submitted");
+            };
+
+            return (
+                <div className="App">
+                    <header className="App-header">
+                        <h1>Welcome to My Simple React App</h1>
+                    </header>
+                    <main>
+                        <p>This is a basic React application with a form.</p>
+                        <form onSubmit={handleSubmit} className="form-container">
+                            <div className="form-row">
+                                <input type="text" placeholder="Company Name" required />
+                                <input type="tel" placeholder="Phone Number" required />
+                            </div>
+                            <div className="form-row">
+                                <input type="email" placeholder="Email" required />
+                                <input type="text" placeholder="Address" required />
+                            </div>
+                            <div className="form-row">
+                                <input type="text" placeholder="Role in Company" required />
+                                <input type="text" placeholder="Last Name" required />
+                            </div>
+                            <div className="form-row">
+                                <input type="text" placeholder="First Name" required />
+                            </div>
+                            <div className="form-row">
+                                <button type="submit" className="submit-btn">SUBMIT</button>
+                            </div>
+                        </form>
+                    </main>
+                </div>
+            );
+        }
+
+        ReactDOM.render(
+            <React.StrictMode>
+                <App />
+            </React.StrictMode>,
+            document.getElementById('root')
+        );
+    </script>
 </body>
 </html>
